@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.hidden{
+    display: none;
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    width: clamp(300px,90%,500px);
+    border: 1px solid rgb(88, 88, 88);
+    border-radius: 6px;
+}
+
+.search-section h1{
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.vehicle-form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+    width: clamp(300px,90%,400px);
+}
+
+.vehicle-form select{
+    padding: 1rem 1rem 1rem 2px;
+    min-width: 100%;
+    font-size: 16px;
+}
+
+.submit-btn{
+    padding: 1rem 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.3rem;
+}
+
+.results-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    width: clamp(300px,90%,500px);
+    border: 1px solid rgb(88, 88, 88);
+    border-radius: 6px;
+}
+
+.results-section h1{
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.results-section ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    list-style-type: none;
+    font-size: 1.3rem;
+    padding: 2rem;
+}
+
+.btn-favorite{
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.3rem;
+}
+
+@media screen and (min-width: 768px) {
+    main {
+        padding: 1rem;
+        flex-direction: row;
+    }
+
+}

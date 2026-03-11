@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+
+    </header>
+
+    <main>
+        <section class="search-section">
+            <H1>Tabela Fipe</H1>
+            <form class="vehicle-form">
+                <select id="marcas">
+                    <option>Selecione a marca do veiculo</option>
+                </select>
+                <select id="modelos">
+                    <option disabled selected >Selecione o modelo do veiculo</option>
+                </select>
+                <select id="anos">
+                    <option disabled selected >Selecione o ano do veiculo</option>
+                </select>
+
+                <button class="submit-btn" type="submit">Pesquisar</button>
+            </form>
+        </section>
+
+        <section class="results-section">
+            <h1>Resultado da Pesquisa</h1>
+            <ul class="result-list"></ul>
+            <button class="btn-favorite hidden">favoritar carro</button>
+        </section>
+    </main>
+</body>
+
+</html>
