@@ -7,6 +7,7 @@ const listModelos = document.getElementById("modelos");
 const listAnos = document.getElementById("anos");
 
 const listaVeiculo = document.querySelector('.result-list')
+const btnFavoritar = document.querySelector('.btn-favorite') 
 
 let idMarcas = 0
 let idModelos = 0
@@ -33,6 +34,10 @@ formulario.addEventListener("submit", (event) => {
   event.preventDefault();
   exibirVeiculo();
 });
+
+btnFavoritar.addEventListener('click', ()=>{
+  favoritarCarro()
+})
 
 async function exibirMarcas() {
 
@@ -94,8 +99,19 @@ async function exibirVeiculo() {
 
   listaVeiculo.innerHTML = `<li> Marca do carro: ${infoVeiculo.Marca}</li> <li> Modelo: ${infoVeiculo.Modelo}</li> <li> Combustível: ${infoVeiculo.Combustivel}</li> <li> Preço médio: ${infoVeiculo.Valor}</li>`
 
+  btnFavoritar.classList.toggle("hidden")
+
 }
 
+async function favoritarCarro(){
+
+  const infoVeiculo = await api.veiculo(idMarcas, idModelos, idAnos)
+  
+  const veiculo = {IdMarca: idMarcas, IdModelo: idModelos, IdAno: idAnos, Marca: infoVeiculo.Marca, Modelo: infoVeiculo.Modelo, Ano: infoVeiculo.AnoModelo}
+
+  await api.postFavorite(veiculo)
+
+}
 
 function apagarModelos() {
   listModelos.innerHTML = "<option disabled selected>Selecione o modelo do veiculo</option>";

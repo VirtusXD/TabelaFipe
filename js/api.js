@@ -9,7 +9,7 @@ const api = {
       return await response.json();
 
     } catch (error) {
-      console.error("Erro ao buscar marcas:", error);
+      console.error("Erro ao buscar marcas");
     }
   },
 
@@ -23,7 +23,7 @@ const api = {
       return await response.json();
 
     } catch (error) {
-      console.error("Erro ao buscar modelos:", error);
+      console.error("Erro ao buscar modelos");
     }
   },
 
@@ -37,7 +37,7 @@ const api = {
       return await response.json();
 
     } catch (error) {
-      console.error("Erro ao buscar anos:", error);
+      console.error("Erro ao buscar anos:");
     }
   },
 
@@ -51,9 +51,28 @@ const api = {
       return await response.json();
 
     } catch (error) {
-      console.error("Erro ao buscar veículo:", error);
+      console.error("Erro ao buscar veículo:");
     }
-  }
+  },
+
+  async postFavorite(veiculo) {
+    try {
+      const response = await fetch(
+        "http://localhost:3000/favorite_car",{
+          method: "POST",
+          headers: {
+            "Content-type": "application/json"
+          },
+          body: JSON.stringify(veiculo)
+        }
+      );
+
+      return response.json()
+
+    } catch {
+      console.error("Erro ao favoritar o veiculo");
+    }
+  },
 
 };
 

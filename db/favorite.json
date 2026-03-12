@@ -1,0 +1,22 @@
+{
+  "favorite_car": [
+    {
+      "id": "3b8b",
+      "IdMarca": "3",
+      "IdModelo": "7",
+      "IdAno": "1999-1",
+      "Marca": "Alfa Romeo",
+      "Modelo": "145 Quadrifoglio 2.0",
+      "Ano": 1999
+    },
+    {
+      "id": "0288",
+      "IdMarca": "153",
+      "IdModelo": "4791",
+      "IdAno": "2008-1",
+      "Marca": "GREAT WALL",
+      "Modelo": "HOVER CUV 2.4 16V 4WD 5p Mec.",
+      "Ano": 2008
+    }
+  ]
+}
