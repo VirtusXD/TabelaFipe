@@ -8,11 +8,38 @@ const listAnos = document.getElementById("anos");
 
 const listaVeiculo = document.querySelector('.result-list')
 
+let idMarcas = 0
+let idModelos = 0
+let idAnos = 0
+
+listMarcas.addEventListener("change", () => {
+  apagarTudo();
+  listMarcas.disabled = false;
+  idMarcas = listMarcas.value;
+  exibirModelos();
+});
+
+listModelos.addEventListener("change", () => {
+  idModelos = listModelos.value;
+  exibirAnos();
+});
+
+listAnos.addEventListener("change", () => {
+  idAnos = listAnos.value;
+  apagarVeiculo();
+});
+
+formulario.addEventListener("submit", (event) => {
+  event.preventDefault();
+  exibirVeiculo();
+});
+
 async function exibirMarcas() {
 
-  listModelos.innerHTML = ""
-  listAnos.innerHTML = ""
-  listaVeiculo.innerHTML = ""
+  listMarcas.innerHTML = '<option disabled selected>Selecione a marca do veiculo</option>'
+
+  listModelos.disabled = true
+  listAnos.disabled = true
 
   const colecaoMarcas = await api.marcas();
 
@@ -24,36 +51,14 @@ async function exibirMarcas() {
 
     listMarcas.append(option);
   });
+
 }
-
-let idMarcas = 0
-let idModelos = 0
-let idAnos = 0
-
-listMarcas.addEventListener('change',()=>{
-    idMarcas = listMarcas.value
-    exibirModelos()
-})
-
-listModelos.addEventListener('change',()=>{
-    idModelos = listModelos.value
-    exibirAnos()
-})
-
-listAnos.addEventListener('change',()=>{
-    idAnos = listAnos.value
-    apagarVeiculo()
-})
-
-formulario.addEventListener("submit", (event)=>{
-  event.preventDefault();
-  exibirVeiculo()
-})
 
 async function exibirModelos() {
 
-  listModelos.innerHTML = ""
-    
+  listModelos.disabled = false
+  apagarModelos();
+
   const colecaoModelos = await api.modelo(idMarcas);
 
   colecaoModelos.modelos.forEach((modelos) => {
@@ -68,7 +73,8 @@ async function exibirModelos() {
 
 async function exibirAnos() {
 
-  listAnos.innerHTML = ""
+  listAnos.disabled = false
+  apagarAnos();
     
   const colecaoAnos = await api.anos(idMarcas,idModelos);
 
@@ -91,9 +97,22 @@ async function exibirVeiculo() {
 }
 
 
-function apagarVeiculo(){
-  listaVeiculo.innerHTML = ""
+function apagarModelos() {
+  listModelos.innerHTML = "<option disabled selected>Selecione o modelo do veiculo</option>";
 }
 
+function apagarAnos() {
+  listAnos.innerHTML = "<option disabled selected>Selecione o ano modelo do veiculo</option>";
+}
+
+function apagarVeiculo() {
+  listaVeiculo.innerHTML = "";
+}
+
+function apagarTudo() {
+  listModelos.innerHTML = "<option disabled selected>Selecione o modelo do veiculo</option>";
+  listAnos.innerHTML = "<option disabled selected>Selecione o ano modelo do veiculo</option>";
+  listaVeiculo.innerHTML = "";
+}
 
 exibirMarcas();
